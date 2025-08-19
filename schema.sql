@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS calendars (
+  id SERIAL PRIMARY KEY,
+  name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS events (
+  id SERIAL PRIMARY KEY,
+  calendar_id INT REFERENCES calendars(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  start_date DATE NOT NULL
+);
